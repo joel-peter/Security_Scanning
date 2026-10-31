@@ -1,23 +1,24 @@
-name: OWASP ZAP Security Scan
+name: Python Security SAST Scan
 
 on:
   push:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-  workflow_dispatch:
 
 jobs:
-  zap_scan:
+  bandit_scan:
     runs-on: ubuntu-latest
-    name: Scan web application
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.12.0
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          target: 'http:/127.0.0.1.5000/'
-          rules_file_name: 'sample_application.py'
-          cmd_options: '-a'
+          python-version: '3.11'
+
+      - name: Install and Run Bandit
+        run: |
+          pip install bandit
+          bandit -r .
