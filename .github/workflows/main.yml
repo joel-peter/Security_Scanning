@@ -18,6 +18,6 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          target: 'https://www.example.com' # Replace with your application's live URL
+          target: 'http:/127.0.0.1.5000/'
           rules_file_name: ''
           cmd_options: '-a'
