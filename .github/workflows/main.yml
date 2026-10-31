@@ -19,5 +19,5 @@ jobs:
         uses: zaproxy/action-baseline@v0.12.0
         with:
           target: 'http:/127.0.0.1.5000/'
-          rules_file_name: ''
+          rules_file_name: 'sample_application.py'
           cmd_options: '-a'
